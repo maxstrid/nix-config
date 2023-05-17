@@ -10,6 +10,13 @@ in {
   ];
 
   home.file = {
+    ".config/river/bg.png" = {
+      source = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/lunik1/nixos-logo-gruvbox-wallpaper/master/png/gruvbox-dark-rainbow.png";
+        sha256 = "sha256-7CMuETntiVUCKhUIdJzX+sf3F47GvuX2a61o4xbEzww=";
+      };
+    };
+
     ".config/river/init" = {
       executable = true;
       text = ''
@@ -167,7 +174,7 @@ in {
         # River will send the process group of the init executable SIGTERM on exit.
         riverctl default-layout rivertile
         riverctl spawn waybar
-        riverctl spawn 'wbg $HOME/Documents/gruvbox-dark-rainbow.png'
+        riverctl spawn 'wbg $HOME/.config/river/bg.png'
         rivertile -view-padding 6 -outer-padding 6 &
       '';
     };
