@@ -31,7 +31,9 @@
     enable = true;
     terminal = "xterm-256color";
     plugins = with pkgs.tmuxPlugins; [
+      yank
       gruvbox
+      tmux-thumbs
     ];
   };
 }
