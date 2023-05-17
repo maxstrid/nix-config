@@ -45,26 +45,28 @@ in {
           bat = "BAT0";
           interval = 60;
           states = {
-              warning = 30;
               critical = 15;
           };
-          format-alt = "{time} {icon}";
-          format =  "{capacity}% {icon}";
-          format-icons = [" " " " " " " " " "];
-          max-length = 25;
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󰂄 {capacity}%";
+          format-critical = "󰂃 {capacity}%";
+          format-alt = "{icon} {time}";
+          format-icons = ["󱉞 " "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
 
         "battery#bat2" = {
           bat = "BAT1";
           interval = 60;
           states = {
-              warning = 30;
               critical = 15;
           };
-          format-alt = "{time} {icon}";
-          format =  "{capacity}% {icon}";
-          format-icons = [" " " " " " " " " "];
-          max-length = 25;
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󰂄 {capacity}%";
+          format-critical = "󰂃 {capacity}%";
+          format-alt = "{icon} {time}";
+          format-icons = ["󱉞 " "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
 
         "clock" = {
@@ -114,7 +116,7 @@ in {
         border: 0;
       }
 
-      #battery, #cpu, #memory, #network, #pulseaudio {
+      .modules-right {
         border: 2px solid #d79921;
         border-radius: 5px;
         padding: 5px;
