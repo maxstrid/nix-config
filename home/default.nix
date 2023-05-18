@@ -5,6 +5,7 @@
     ./editor.nix
     ./terminal.nix
     ./river.nix
+    ./chrome.nix
     ./dev.nix
     ./packages.nix
   ];
