@@ -31,12 +31,18 @@
     font = "Lat2-Terminus16";
   };
 
-  services.greetd = {
+  programs.regreet = {
     enable = true;
-    package = pkgs.greetd.tuigreet;
     settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -c river";
+      background = {
+        path = pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/lunik1/nixos-logo-gruvbox-wallpaper/master/png/gruvbox-dark-rainbow.png";
+          sha256 = "sha256-7CMuETntiVUCKhUIdJzX+sf3F47GvuX2a61o4xbEzww=";
+        };
+      };
+
+      GTK = {
+        application_prefer_dark_theme = true;
       };
     };
   };
@@ -58,7 +64,7 @@
     llvm
     libcxx
     python3
-    greetd.tuigreet
+    greetd.regreet
   ];
 
   hardware.opengl.enable = true;

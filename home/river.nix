@@ -5,8 +5,8 @@ let
   blankTextCol ="white";
 in {
   home.packages = [
-    pkgs.river
     pkgs.wbg
+    pkgs.river
   ];
 
   home.file = {
