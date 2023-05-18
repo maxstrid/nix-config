@@ -137,6 +137,13 @@
         '';
       }
       vim-nix
+      {
+        plugin = rust-tools-nvim;
+        type = "lua";
+        config = ''
+          require('rust-tools').setup()
+        '';
+      }
     ];
     extraPackages = with pkgs; [
       pkgs.rust-analyzer
