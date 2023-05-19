@@ -91,6 +91,7 @@
 
   services.tlp.enable = true;
   services.upower.enable = true;
+  programs.dconf.enable = true;
 
   system.stateVersion = "22.11";
 }

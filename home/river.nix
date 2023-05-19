@@ -9,6 +9,14 @@ in {
     pkgs.river
   ];
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Gruvbox-Dark-BL";
+      package = pkgs.gruvbox-gtk-theme;
+    };
+  };
+
   home.file = {
     ".config/river/bg.png" = {
       source = pkgs.fetchurl {
