@@ -73,6 +73,8 @@
     VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
   };
 
+  services.throttled.enable = true;
+
   hardware.opengl.extraPackages = with pkgs; [
     vaapiIntel
     libvdpau-va-gl
@@ -83,6 +85,9 @@
 
   users.users.max.isNormalUser = true;
   users.users.max.extraGroups = [ "wheel" ];
+
+  hardware.trackpoint.enable = true;
+  hardware.trackpoint.emulateWheel = true;
 
   services.tlp.enable = true;
   services.upower.enable = true;
