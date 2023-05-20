@@ -86,8 +86,12 @@
   users.users.max.isNormalUser = true;
   users.users.max.extraGroups = [ "wheel" ];
 
-  hardware.trackpoint.enable = true;
-  hardware.trackpoint.emulateWheel = true;
+  hardware.trackpoint = {
+    enable = true;
+    emulateWheel = true;
+    sensitivity = 200;
+    speed = 150;
+  };
 
   services.tlp.enable = true;
   services.upower.enable = true;
