@@ -10,7 +10,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, rust-overlay, ... }: {
+  outputs = { self, nixpkgs, home-manager, rust-overlay, ... }:
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    # For my nix-on-arch setup
+    homeConfigurations."max" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [ ./home ];
+    };
     nixosConfigurations = {
       t480 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

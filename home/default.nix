@@ -2,19 +2,19 @@
 
 {
   imports = [
-    ./editor.nix
-    ./terminal.nix
-    ./river.nix
+#    ./editor.nix
+#    ./terminal.nix
+#    ./river.nix
 #    ./chrome.nix
-    ./dev.nix
-    ./packages.nix
+#    ./dev.nix
+#    ./packages.nix
   ];
 
   home.username = "max";
   home.homeDirectory = "/home/max";
 
   fonts.fontconfig.enable = true;
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
 
   programs.home-manager.enable = true;
 }
