@@ -8,6 +8,7 @@
 #    ./chrome.nix
 #    ./dev.nix
 #    ./packages.nix
+    ./zsh.nix
   ];
 
   home.username = "max";
