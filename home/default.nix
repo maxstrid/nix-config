@@ -1,15 +1,21 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 
 {
   imports = [
+    nix-colors.homeManagerModules.default
 #    ./editor.nix
 #    ./terminal.nix
 #    ./river.nix
 #    ./chrome.nix
-#    ./dev.nix
+    ./dev.nix
 #    ./packages.nix
     ./zsh.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = (_: true);
+
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 
   home.username = "max";
   home.homeDirectory = "/home/max";
