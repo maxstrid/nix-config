@@ -3,7 +3,7 @@
 {
   imports = [
     nix-colors.homeManagerModules.default
-#    ./editor.nix
+    ./editor.nix
 #    ./terminal.nix
 #    ./river.nix
 #    ./chrome.nix
