@@ -18,7 +18,6 @@
     '';
     shellAliases = {
       nvim = "TERM=xterm-kitty nvim";
-      vim = "nvim";
       ls = "exa";
       rebuild = "sudo nixos-rebuild switch --flake ~/.config/nix-config/.#t480";
       hm-rebuild = "home-manager switch --flake ~/.config/nix-config/.";
