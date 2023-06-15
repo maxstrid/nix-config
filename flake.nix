@@ -15,20 +15,18 @@
   outputs = { self, nixpkgs, home-manager, rust-overlay, nix-colors, nixgl, ... }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      system = "x86_64-linux";
-      overlays = [ nixgl.overlay ];
-    };
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
     # For my nix-on-arch setup
     homeConfigurations."max" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home ./hosts/arch ];
-        extraSpecialArgs = { inherit nix-colors; };
+        extraSpecialArgs = { inherit nix-colors; inherit nixgl; };
     };
     nixosConfigurations = {
       t480 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit nix-colors; };
         modules = [
           ./hosts/t480
           ({ pkgs, ... }: {
