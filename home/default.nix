@@ -4,12 +4,11 @@
   imports = [
     nix-colors.homeManagerModules.default
     ./editor.nix
-#    ./terminal.nix
+    ./terminal.nix
 #    ./river.nix
 #    ./chrome.nix
     ./dev.nix
 #    ./packages.nix
-    ./zsh.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

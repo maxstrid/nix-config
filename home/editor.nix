@@ -100,6 +100,10 @@
             capabilities = capabilities,
             cmd = {'clangd', '--clang-tidy', '--compile-commands-dir=build', '--enable-config'},
           }
+
+          lspconfig.rnix.setup {
+            capabilities = capabilities
+          }
         '';
       }
       {
@@ -198,6 +202,7 @@
     extraPackages = with pkgs; [
       pkgs.rust-analyzer
       pkgs.clang-tools
+      pkgs.rnix-lsp
     ];
   };
 }
