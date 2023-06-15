@@ -9,17 +9,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-colors.url = "github:misterio77/nix-colors";
+    nixgl.url = "github:guibou/nixGL";
   };
 
-  outputs = { self, nixpkgs, home-manager, rust-overlay, nix-colors, ... }:
+  outputs = { self, nixpkgs, home-manager, rust-overlay, nix-colors, nixgl, ... }:
   let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      overlays = [ nixgl.overlay ];
+    };
   in {
     # For my nix-on-arch setup
     homeConfigurations."max" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-
         modules = [ ./home ];
         extraSpecialArgs = { inherit nix-colors; };
     };
