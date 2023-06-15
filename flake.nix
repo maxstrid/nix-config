@@ -23,7 +23,7 @@
     # For my nix-on-arch setup
     homeConfigurations."max" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home ];
+        modules = [ ./home ./hosts/arch ];
         extraSpecialArgs = { inherit nix-colors; };
     };
     nixosConfigurations = {

@@ -12,13 +12,6 @@
 #    ./packages.nix
   ];
 
-  home.packages = [
-    pkgs.nixgl.nixGLIntel
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = (_: true);
-
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-hard;
 
   home.username = "max";
