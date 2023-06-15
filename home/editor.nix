@@ -198,6 +198,7 @@
           }
         '';
       }
+      indent-blankline-nvim
     ];
     extraPackages = with pkgs; [
       pkgs.rust-analyzer
