@@ -31,19 +31,19 @@
     };
   };
 
-#  programs.kitty = {
-#    enable = true;
-#    font = {
-#      package =
-#        (pkgs.nerdfonts.override {
-#          fonts = [
-#            "JetBrainsMono"
-#          ];
-#        });
-#        name = "JetBrainsMono NF";
-#    };
-#    theme = "Gruvbox Material Dark Medium";
-#  };
+  programs.kitty = {
+    enable = true;
+    font = {
+      package =
+        (pkgs.nerdfonts.override {
+          fonts = [
+            "JetBrainsMono"
+          ];
+        });
+        name = "JetBrainsMono NF";
+    };
+    theme = "Gruvbox Dark";
+  };
 
   programs.tmux = {
     enable = true;
