@@ -19,7 +19,7 @@ in {
     };
     ".config/swayidle/config" = {
       text = ''
-      timeout 360 "systemctl suspend-then-hibernate"
+      timeout 360 "systemctl hybrid-sleep"
       before-sleep swaylock 
       lock swaylock
       '';
@@ -166,7 +166,7 @@ in {
       riverctl map normal Super P spawn 'bemenu-run'
 
       # ReInit
-      riverctl map normal Super+Shift R spawn 'pkill yambar & pkill swaybg && pkill swayidle && $HOME/.config/river/init'
+      riverctl map normal Super+Shift R spawn 'pkill yambar && pkill swaybg && pkill swayidle && makoctl reload && $HOME/.config/river/init'
 
       # Run WiFi menu
       riverctl map normal Super W spawn 'wifi'
@@ -330,7 +330,7 @@ in {
       riverctl spawn 'swayidle'
       riverctl spawn '/usr/lib/kdeconnectd'
       riverctl float-filter-add title "KDE Connect"
-      riverctl spawn 'river-tag-overlay --background-colour 0x${config.colorScheme.colors.base00} --square-active-background-colour 0x${config.colorScheme.colors.base0A} --square-active-border-colour 0x${config.colorScheme.colors.base0A} --square-active-occupied-colour 0x${config.colorScheme.colors.base01} --square-inactive-background-colour 0x${config.colorScheme.colors.base01} --square-inactive-border-colour 0x${config.colorScheme.colors.base01} --square-inactive-occupied-colour 0x${config.colorScheme.colors.base0A} --square-size 24px --square-inner-padding 7'
+      [ "$(pgrep -fc river-tag-overlay)" = 0 ] && riverctl spawn 'river-tag-overlay --background-colour 0x${config.colorScheme.colors.base00} --square-active-background-colour 0x${config.colorScheme.colors.base0A} --square-active-border-colour 0x${config.colorScheme.colors.base0A} --square-active-occupied-colour 0x${config.colorScheme.colors.base01} --square-inactive-background-colour 0x${config.colorScheme.colors.base01} --square-inactive-border-colour 0x${config.colorScheme.colors.base01} --square-inactive-occupied-colour 0x${config.colorScheme.colors.base0A} --square-size 24px --square-inner-padding 7 &'
       riverctl spawn 'mako'
 
       rivertile -view-padding 12 -outer-padding 2 &
@@ -342,8 +342,8 @@ in {
   # not systemd
  services.mako = {
     enable = true;
-    backgroundColor = "${config.colorScheme.colors.base00}";
-    borderColor = "${config.colorScheme.colors.base0A}";
+    backgroundColor = "#${config.colorScheme.colors.base00}";
+    borderColor = "#${config.colorScheme.colors.base0A}";
     width = 300;
     height = 110;
     borderSize = 2;
