@@ -7,6 +7,10 @@
     pkgs.nixgl.nixGLIntel
   ];
 
+  home.sessionVariables = {
+    TERMINAL = "nixGLIntel kitty";
+  };
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = (_: true);
 }
