@@ -43,7 +43,7 @@
       };
     };
     nixosConfigurations = {
-      t480 = pkgs.lib.nixosSystem {
+      t480 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit nix-colors; };
         modules = [
@@ -59,7 +59,7 @@
           }
         ];
       };
-      home-server = pkgs.lib.nixosSystem {
+      home-server = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit nix-colors; };
         modules = [
