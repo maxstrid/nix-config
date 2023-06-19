@@ -3,17 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-colors.url = "github:misterio77/nix-colors";
-    nixgl.url = "github:guibou/nixGL";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-colors.url = "github:misterio77/nix-colors";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    nixgl.url = "github:guibou/nixGL";
   };
 
   outputs = { self, nixpkgs, home-manager, rust-overlay, nix-colors, nixgl, nur, ... }:
@@ -29,16 +29,18 @@
     };
   in {
     # For my nix-on-arch setup
-    homeConfigurations."max" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+    homeConfigurations = {
+      "max" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-      modules = [
-        nur.hmModules.nur
-        ./home
-        ./hosts/arch
-      ];
+        modules = [
+          nur.hmModules.nur
+          ./home
+          ./hosts/arch
+        ];
 
-      extraSpecialArgs = { inherit nix-colors nixgl; };
+        extraSpecialArgs = { inherit nix-colors nixgl; };
+      };
     };
     nixosConfigurations = {
       t480 = pkgs.lib.nixosSystem {
