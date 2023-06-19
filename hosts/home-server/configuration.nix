@@ -65,14 +65,17 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 2222 ];
+      extraCommands = "iptables -t nat -A POSTROUTING -d 104.9.124.207 -p tcp -m tcp --dport 2222 -j MASQUERADE";
     };
-    interfaces.eno1.ipv4.addresses = [{
-      address = "192.168.1.90";
-      prefixLength = 24;
-    }];
-    defaultGateway = {
-      address = "192.168.1.90";
-      interface = "eno1";
+    nat = {
+      enable = true;
+      internalInterfaces = [ "wg0" ];
+      externalInterface = "eno1";
+      forwardPorts = [{
+        sourcePort = 2222;
+        proto = "tcp";
+        destination = "104.9.124.207";
+      }];
     };
   };
 
