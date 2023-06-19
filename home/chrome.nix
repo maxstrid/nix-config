@@ -22,7 +22,7 @@
       (createChromiumExtension {
         # ublock origin
         id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
-        sha256 = "sha256:0qfphf8abzvy9cng8112zzbs9vsnbdqwjwywigk8nrgh4pignvb1";
+        sha256 = "sha256:08hq8blbmqz3kfs0mbhfpy8hkdwp0rvqi7aj8pgln76pmzfrd4q6";
         version = "1.49.2";
       })
       (createChromiumExtension {

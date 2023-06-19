@@ -5,11 +5,11 @@
     nix-colors.homeManagerModules.default
     ./editor.nix
     ./terminal.nix
+    ./yambar.nix
     ./wm.nix
-#    ./river.nix
 #    ./chrome.nix
     ./dev.nix
-#    ./packages.nix
+    ./packages.nix
   ];
 
   # Based on morhetz gruvbox
@@ -44,4 +44,8 @@
   home.stateVersion = "23.05";
 
   programs.home-manager.enable = true;
+  services.home-manager.autoUpgrade = {
+    enable = true;
+    frequency = "daily";
+  };
 }

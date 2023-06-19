@@ -2,7 +2,7 @@
 
 {
   programs.ssh = {
-    enable = true;
+    enable = false;
     matchBlocks = {
       "*" = {
         setEnv = {

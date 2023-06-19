@@ -4,6 +4,32 @@
 let 
   background_path = ".config/bg.png";
 in {
+  home.packages = [
+    pkgs.wbg
+    pkgs.swayidle
+#    pkgs.yambar
+  ];
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Gruvbox-Dark-BL";
+      package = pkgs.gruvbox-gtk-theme;
+    };
+  };
+
+  services.mako = {
+    enable = true;
+    backgroundColor = "#${config.colorScheme.colors.base00}";
+    borderColor = "#${config.colorScheme.colors.base0A}";
+    width = 300;
+    height = 110;
+    borderSize = 2;
+    defaultTimeout = 15000;
+    icons = false;
+    ignoreTimeout = true;
+  };
+
   home.file = {
     ".config/bg.png" = {
       source = pkgs.fetchurl {
@@ -25,145 +51,14 @@ in {
       '';
     };
     # TODO: Add kdeconnectd script here
-    ".config/yambar/config.yml" = {
-      text = ''
-      brains: &brains JetBrainsMono NF:pixelsize=16
-      base: &deco_base
-        left-margin: 10
-        right-margin: 10
-        foreground: ${config.colorScheme.colors.base0A}ff
-        font: *brains
-        deco: {background: {color: ${config.colorScheme.colors.base00}ff}}
-
-      bar:
-        height: 16
-        spacing: 0
-        location: top
-        layer: bottom
-        background: ${config.colorScheme.colors.base00}ff
-
-        font: *brains
-
-        left:
-          - clock:
-              time-format: "󰥔 %I:%M %p"
-              content:
-                string:
-                  <<: *deco_base
-                  text: "{time}"
-
-        right:
-          - script:
-              path: "/home/max/.local/bin/yambar-connect"
-              content:
-                map:
-                  conditions:
-                    paired && availible:
-                      - string: {text: " Paired", on-click: "kdeconnect-app", <<: *deco_base}
-                    availible:
-                      - string: {text: "󰥐 Unpaired", on-click: "kdeconnect-app", <<: *deco_base}
-
-          - network:
-              name: enp0s31f6
-              content:
-                map:
-                  conditions:
-                    ~carrier: {empty: {}}
-                    carrier:
-                      map:
-                        default: {string: {text: "󰈀  {ipv4}", <<: *deco_base}}
-                        conditions:
-                          state == up: {string: {text: "󰈀  {ipv4}", <<: *deco_base}}
-          - network:
-              name: wlan0
-              content:
-                map:
-                  default: {string: {text: "󰤨  {ssid}", <<: *deco_base}}
-                  conditions:
-                    state == down:
-                      - string: {text: ""}
-                    state == up:
-                      - string: {text: "󰤨  {ssid}", <<: *deco_base}
-
-          - alsa:
-              card: default
-              mixer: Master
-              content:
-                map:
-                  conditions:
-                    muted:
-                      - string: {text: "󰝟 {percent}%", <<: *deco_base}
-                    ~muted:
-                      - string: {text: "{percent}%", <<: *deco_base}
-
-          - battery:
-              name: BAT0
-              poll-interval: 15
-              anchors:
-               discharging: &discharging
-                 list:
-                   items:
-                     - ramp:
-                         tag: capacity
-                         items:
-                           - string: {text: "󰂃 {capacity}%", <<: *deco_base, deco: {background: {color: ${config.colorScheme.colors.base08}ff}}, foreground: ${config.colorScheme.colors.base00}ff}
-                           - string: {text: "󰂃 {capacity}%", <<: *deco_base, deco: {background: {color: ${config.colorScheme.colors.base08}ff}}, foreground: ${config.colorScheme.colors.base00}ff}
-                           - string: {text: "󰁼 {capacity}%", <<: *deco_base}
-                           - string: {text: "󰁽 {capacity}%", <<: *deco_base}
-                           - string: {text: "󰁾 {capacity}%", <<: *deco_base}
-                           - string: {text: "󰁿 {capacity}%", <<: *deco_base}
-                           - string: {text: "󰂀 {capacity}%", <<: *deco_base}
-                           - string: {text: "󰂁 {capacity}%", <<: *deco_base}
-                           - string: {text: "󰂂 {capacity}%", <<: *deco_base}
-                           - string: {text: "󰁹 {capacity}%", <<: *deco_base}
-              content:
-                map:
-                  conditions:
-                    state == discharging:
-                      <<: *discharging
-                    state == unknown:
-                      <<: *discharging
-                    state == "not charging":
-                      <<: *discharging
-                    state == full:
-                      - string: {text: "󰁹 {capacity}%", <<: *deco_base}
-                    state == charging:
-                      string:
-                        text: "󰂄 {capacity}%"
-                        <<: *deco_base
-                        deco: {background: {color: ${config.colorScheme.colors.base0B}ff}}
-                        foreground: ${config.colorScheme.colors.base00}ff
-
-          - battery:
-              name: BAT1
-              poll-interval: 15
-              content:
-                map:
-                  conditions:
-                    state == discharging:
-                      <<: *discharging
-                    state == unknown:
-                      <<: *discharging
-                    state == "not charging":
-                      <<: *discharging
-                    state == full:
-                      - string: {text: "󰁹 {capacity}%", <<: *deco_base}
-                    state == charging:
-                      string:
-                        text: "󰂄 {capacity}%"
-                        <<: *deco_base
-                        deco: {background: {color: ${config.colorScheme.colors.base0B}ff}}
-                        foreground: ${config.colorScheme.colors.base00}ff
-      '';
-    };
-    ".config/river/init" = {
+        ".config/river/init" = {
       executable = true;
       text = ''
       #!/bin/sh
       riverctl map normal Super+Shift Return spawn 'eval $TERMINAL'
 
       # Run bemenu
-      riverctl map normal Super P spawn 'bemenu-run'
+      riverctl map normal Super P spawn 'bemenu-run --fn "JetBrainsMono NF 14px" --tb "#1d2021" --tf "#b16286" --fb "#1d2021" --ff "#ffffff" --cb "#1d2021" --cf "#d79921" --nb "#1d2021" --nf "#d79921" --hb "#1d2021" --hf "#b16286" --fbb "#282828" --fbf "#d79921" --sb "#1d2021" --sf "#d79921" --ab "#282828" --af "#d79921"'
 
       # ReInit
       riverctl map normal Super+Shift R spawn 'pkill yambar && pkill swaybg && pkill swayidle && makoctl reload && $HOME/.config/river/init'
@@ -326,6 +221,8 @@ in {
       # River will send the process group of the init executable SIGTERM on exit.
       riverctl default-layout rivertile
       riverctl spawn yambar
+      riverctl spawn pipewire
+      riverctl spawn '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1'
       riverctl spawn 'swaybg -i ${background_path}'
       riverctl spawn 'swayidle'
       riverctl spawn '/usr/lib/kdeconnectd'
@@ -336,19 +233,5 @@ in {
       rivertile -view-padding 12 -outer-padding 2 &
       '';
     };
-  };
-
-  # These services should be ran through a wm and
-  # not systemd
- services.mako = {
-    enable = true;
-    backgroundColor = "#${config.colorScheme.colors.base00}";
-    borderColor = "#${config.colorScheme.colors.base0A}";
-    width = 300;
-    height = 110;
-    borderSize = 2;
-    defaultTimeout = 15000;
-    icons = false;
-    ignoreTimeout = true;
   };
 }

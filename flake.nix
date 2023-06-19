@@ -14,8 +14,10 @@
 
   outputs = { self, nixpkgs, home-manager, rust-overlay, nix-colors, nixgl, ... }:
   let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      overlays = [ rust-overlay.overlays.default ];
+    };
   in {
     # For my nix-on-arch setup
     homeConfigurations."max" = home-manager.lib.homeManagerConfiguration {
@@ -24,13 +26,12 @@
         extraSpecialArgs = { inherit nix-colors; inherit nixgl; };
     };
     nixosConfigurations = {
-      t480 = nixpkgs.lib.nixosSystem {
+      t480 = pkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit nix-colors; };
         modules = [
           ./hosts/t480
           ({ pkgs, ... }: {
-            nixpkgs.overlays = [ rust-overlay.overlays.default ];
             environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
           })
           home-manager.nixosModules.home-manager {

@@ -5,6 +5,7 @@
 
   home.packages = [
     pkgs.nixgl.nixGLIntel
+    pkgs.rust-bin.stable.latest.default
   ];
 
   home.sessionVariables = {
