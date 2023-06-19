@@ -59,6 +59,5 @@
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [ 22 ];
 
-  system.copySystemConfiguration = true;
   system.stateVersion = "23.05";
 }
