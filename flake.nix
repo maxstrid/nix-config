@@ -10,26 +10,42 @@
     };
     nix-colors.url = "github:misterio77/nix-colors";
     nixgl.url = "github:guibou/nixGL";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, rust-overlay, nix-colors, nixgl, ... }:
+  outputs = { self, nixpkgs, home-manager, rust-overlay, nix-colors, nixgl, nur, ... }:
   let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
-      overlays = [ rust-overlay.overlays.default ];
+      config.allowUnfree = true;
+      config.allowUnfreePredicate = (_: true);
+      overlays = [
+        rust-overlay.overlays.default
+        nur.overlay
+      ];
     };
   in {
     # For my nix-on-arch setup
     homeConfigurations."max" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home ./hosts/arch ];
-        extraSpecialArgs = { inherit nix-colors; inherit nixgl; };
+      inherit pkgs;
+
+      modules = [
+        nur.hmModules.nur
+        ./home
+        ./hosts/arch
+      ];
+
+      extraSpecialArgs = { inherit nix-colors nixgl; };
     };
     nixosConfigurations = {
       t480 = pkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit nix-colors; };
         modules = [
+          nur.nixosModules.nur
           ./hosts/t480
           ({ pkgs, ... }: {
             environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];

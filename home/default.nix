@@ -6,6 +6,7 @@
     ./editor.nix
     ./terminal.nix
     ./yambar.nix
+    ./firefox.nix
     ./wm.nix
 #    ./chrome.nix
     ./dev.nix
