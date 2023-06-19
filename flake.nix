@@ -59,7 +59,14 @@
           }
         ];
       };
+      home-server = pkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit nix-colors; };
+        modules = [
+          nur.nixosModules.nur
+          ./hosts/home-server
+        ];
+      };
     };
-
   };
 }
