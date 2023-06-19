@@ -72,7 +72,7 @@
     }];
     defaultGateway = {
       address = "192.168.1.90";
-      interface = "en01";
+      interface = "eno1";
     };
   };
 
