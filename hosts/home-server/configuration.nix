@@ -58,6 +58,7 @@
     ports = [ 2222 ];
     settings = {
       PermitRootLogin = "no";
+      LogLevel = "VERBOSE";
       PasswordAuthentication = false;
     };
   };
