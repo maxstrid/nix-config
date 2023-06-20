@@ -43,8 +43,9 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 2222 ];
-    allowedUDPPorts = [ ];
+    # Some ports need to be availible for jellyfin
+    allowedTCPPorts = [ 2222 8096 8920 ];
+    allowedUDPPorts = [ 1900 7359 ];
   };
 
   services.openssh = {
@@ -73,6 +74,8 @@
       mesa
     ];
   };
+
+  services.jellyfin.enable = true;
 
   system.stateVersion = "23.05";
 }
