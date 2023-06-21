@@ -16,9 +16,8 @@
         identityFile = "/home/max/.ssh/id_github_ed25519";
       };
       "home-server" = {
-        hostname = "104.9.124.207";
+        hostname = "192.168.1.90";
         identitiesOnly = true;
-        port = 2222;
         identityFile = "/home/max/.ssh/id_home_server_ed25519";
         user = "admin";
       };

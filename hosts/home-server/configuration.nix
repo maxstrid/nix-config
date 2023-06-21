@@ -43,14 +43,20 @@
 
   networking.firewall = {
     enable = true;
-    # Some ports need to be availible for jellyfin
-    allowedTCPPorts = [ 2222 8096 8920 ];
-    allowedUDPPorts = [ 1900 7359 ];
+    allowedTCPPorts = [
+      22
+      # Jellyfin ports
+      8096 8920
+    ];
+    allowedUDPPorts = [
+      # Jellyfin ports
+      1900 7359
+    ];
   };
 
   services.openssh = {
     enable = true;
-    ports = [ 2222 ];
+    ports = [ 22 ];
     settings = {
       PermitRootLogin = "no";
       LogLevel = "VERBOSE";
