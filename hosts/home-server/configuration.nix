@@ -82,6 +82,12 @@
       };
     };
 
+    nextcloud = {
+      enable = true;
+      package = pkgs.nextcloud27;
+      hostName = "192.168.1.90";
+    };
+
     jellyfin.enable = true;
   };
 
