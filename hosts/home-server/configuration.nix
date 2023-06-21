@@ -44,7 +44,7 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      22
+      22 80 443
       # Jellyfin ports
       8096 8920
     ];
@@ -52,16 +52,6 @@
       # Jellyfin ports
       1900 7359
     ];
-  };
-
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-    settings = {
-      PermitRootLogin = "no";
-      LogLevel = "VERBOSE";
-      PasswordAuthentication = false;
-    };
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
@@ -81,7 +71,38 @@
     ];
   };
 
-  services.jellyfin.enable = true;
+  services = {
+    openssh = {
+      enable = true;
+      ports = [ 22 ];
+      settings = {
+        PermitRootLogin = "no";
+        LogLevel = "VERBOSE";
+        PasswordAuthentication = false;
+      };
+    };
+
+    services.nginx = {
+      enable = true;
+
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+
+      virtualHosts."192.168.1.90" = {
+        addSSL = true;
+        enableACME = true;
+      };
+    };
+
+    services.jellyfin.enable = true;
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    email = "maxwell.henderson@mailbox.org";
+  };
 
   system.stateVersion = "23.05";
 }
