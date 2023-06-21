@@ -101,7 +101,7 @@
 
   security.acme = {
     acceptTerms = true;
-    email = "maxwell.henderson@mailbox.org";
+    defaults.email = "maxwell.henderson@mailbox.org";
   };
 
   system.stateVersion = "23.05";
