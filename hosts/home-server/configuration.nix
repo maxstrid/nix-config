@@ -82,26 +82,7 @@
       };
     };
 
-    nginx = {
-      enable = true;
-
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
-
-      virtualHosts."192.168.1.90" = {
-        addSSL = true;
-        enableACME = true;
-      };
-    };
-
     jellyfin.enable = true;
-  };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "maxwell.henderson@mailbox.org";
   };
 
   system.stateVersion = "23.05";
