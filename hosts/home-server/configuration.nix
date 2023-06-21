@@ -82,7 +82,7 @@
       };
     };
 
-    services.nginx = {
+    nginx = {
       enable = true;
 
       recommendedGzipSettings = true;
@@ -96,7 +96,7 @@
       };
     };
 
-    services.jellyfin.enable = true;
+    jellyfin.enable = true;
   };
 
   security.acme = {
