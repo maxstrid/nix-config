@@ -48,6 +48,7 @@
         modules = [
           nur.hmModules.nur
           ./home
+          ./common/home
           ./hosts/arch
         ];
 
@@ -67,7 +68,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.max = import ./home;
+            home-manager.users.max = import ./common/home;
           }
         ];
       };
@@ -78,6 +79,14 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-x220
           nur.nixosModules.nur
           ./hosts/x220
+          ({ pkgs, ... }: {
+            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+          })
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.max = import ./common/home;
+          }
         ];
       };
       home-server = nixpkgs.lib.nixosSystem {
