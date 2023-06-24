@@ -6,10 +6,6 @@
     ./editor.nix
   ];
 
-  home.packages = [
-    pkgs.rust-bin.stable.latest.default
-  ];
-
   # Based on morhetz gruvbox
   colorScheme = {
     slug = "gruvbox";
