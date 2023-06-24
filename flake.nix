@@ -75,6 +75,7 @@
         ];
       };
       x220 = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
         system = "x86_64-linux";
         specialArgs = { inherit nix-colors; };
         modules = [
@@ -82,7 +83,6 @@
           nur.nixosModules.nur
           ./hosts/x220
           ({ pkgs, ... }: {
-            inherit pkgs;
             environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
           })
           home-manager.nixosModules.home-manager {
