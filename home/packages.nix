@@ -3,6 +3,7 @@
 {
   home.packages = [
     pkgs.firefox
+    pkgs.dolphin-emu
     pkgs.exa
     pkgs.keepassxc
     pkgs.wl-clipboard
