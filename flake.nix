@@ -62,9 +62,6 @@
         modules = [
           nur.nixosModules.nur
           ./hosts/t480
-          ({ pkgs, ... }: {
-            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
-          })
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -79,9 +76,6 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-x220
           nur.nixosModules.nur
           ./hosts/x220
-          ({ pkgs, ... }: {
-            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
-          })
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
