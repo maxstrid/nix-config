@@ -71,6 +71,15 @@
           }
         ];
       };
+      x220 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit nix-colors; };
+        modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-x220
+          nur.nixosModules.nur
+          ./hosts/x220
+        ];
+      };
       home-server = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit nix-colors; };
