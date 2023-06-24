@@ -82,6 +82,7 @@
           nur.nixosModules.nur
           ./hosts/x220
           ({ pkgs, ... }: {
+            inherit pkgs;
             environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
           })
           home-manager.nixosModules.home-manager {
