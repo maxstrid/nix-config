@@ -40,6 +40,7 @@
       o.cmdheight = 0
 
       vim.cmd("autocmd FileType nix setlocal tabstop=2 shiftwidth=2 expandtab")
+      vim.cmd("autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab")
 
       local default_opts = { noremap = true, silent = true }
       vim.g.mapleader = ' '
