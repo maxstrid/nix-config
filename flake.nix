@@ -83,7 +83,6 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-x220
           nur.nixosModules.nur
           ./hosts/x220
-          ./modules/dwm.nix
           ({ pkgs, ... }: {
             environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
           })
