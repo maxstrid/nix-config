@@ -90,6 +90,7 @@
           ];
           specialArgs = {
             inherit home-manager;
+            inherit nix-colors;
           };
         };
         home-server = nixpkgs.lib.nixosSystem {

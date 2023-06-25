@@ -17,7 +17,7 @@
   ];
 
   fonts.fonts = [
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono"]; })
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   services.xserver = {
