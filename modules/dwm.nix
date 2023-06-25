@@ -28,7 +28,7 @@
     };
     displayManager = {
       startx.enable = true;
-    }
+    };
   };
 
   home-manager.users.max.home.file = {
