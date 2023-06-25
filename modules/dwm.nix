@@ -26,6 +26,7 @@
     layout = "us";
     windowManager = {
       dwm.enable = true;
+      dwm.package = pkgs.dwm;
     };
   };
 
