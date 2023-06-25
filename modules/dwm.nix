@@ -23,7 +23,7 @@
   services.xserver = {
     enable = true;
     layout = "us";
-    displayManager = {
+    windowManager = {
       dwm.enable = true;
       startx.enable = true;
     };
