@@ -12,8 +12,9 @@
     })
   ];
 
-  home-manager.users.max.home.packages = [
+  environment.systemPackages = [
     pkgs.dmenu
+    pkgs.st
   ];
 
   fonts.fonts = [
