@@ -82,7 +82,10 @@
           inherit pkgs;
           modules = [
             home-manager.nixosModules.home-manager
-            { home-manager.users.max = ./common/home; }
+            {
+              home-manager.extraSpecialArgs = { inherit nix-colors; };
+              home-manager.users.max = ./common/home;
+            }
             nixos-hardware.nixosModules.lenovo-thinkpad-x220
             nur.nixosModules.nur
             ./hosts/x220
@@ -90,7 +93,6 @@
           ];
           specialArgs = {
             inherit home-manager;
-            inherit nix-colors;
           };
         };
         home-server = nixpkgs.lib.nixosSystem {
