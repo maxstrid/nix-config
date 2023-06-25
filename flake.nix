@@ -91,7 +91,12 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit nix-colors; };
-            home-manager.users.max = import ./common/home;
+            home-manager.users.max = {
+              imports = [
+                ./common/home
+                ./modules/dwm.nix
+              ];
+            };
           }
         ];
       };
