@@ -2,13 +2,9 @@
 
 {
   nixpkgs.overlays = [
-    (self: super: {
-      dwm = super.dwm.overrideAttrs (oldAttrs: rec {
-        src = builtins.fetchGit https://github.com/maxstrid/dwm;
-      });
-      st = super.st.overrideAttrs (oldAttrs: rec {
-        src = builtins.fetchGit https://github.com/maxstrid/st;
-      });
+    (final: prev: {
+      dwm = prev.dwm.overrideAttrs (old: { src = builtins.fetchGit https://github.com/maxstrid/dwm; });
+      st = prev.st.overrideAttrs (old: { src = builtins.fetchGit https://github.com/maxstrid/st; });
     })
   ];
 
