@@ -12,7 +12,7 @@
     })
   ];
 
-  home.packages = [
+  home-manager.home.packages = [
     pkgs.dmenu
   ];
 
@@ -29,7 +29,7 @@
     };
   };
 
-  home.file = {
+  home-manager.home.file = {
     ".xinitrc" = {
       enable = true;
       text = ''
