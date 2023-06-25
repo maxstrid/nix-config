@@ -25,8 +25,10 @@
     layout = "us";
     windowManager = {
       dwm.enable = true;
-      startx.enable = true;
     };
+    displayManager = {
+      startx.enable = true;
+    }
   };
 
   home-manager.users.max.home.file = {
