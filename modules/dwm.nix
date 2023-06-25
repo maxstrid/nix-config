@@ -13,7 +13,7 @@
   ];
 
   home.packages = [
-    dmenu
+    pkgs.dmenu
   ];
 
   services.xserver = {
