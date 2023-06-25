@@ -16,10 +16,6 @@
     pkgs.dmenu
   ];
 
-  fonts.fonts = [
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono"]; })
-  ];
-
   services.xserver = {
     enable = true;
     layout = "us";

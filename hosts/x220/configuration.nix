@@ -19,6 +19,10 @@
     };
   };
 
+  fonts.fonts = [
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono"]; })
+  ];
+
   boot.loader.grub.efiSupport = true;
 
   networking.hostName = "x220";
