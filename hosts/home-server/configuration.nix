@@ -38,6 +38,7 @@
       vim
       curl
       wget
+      rclone
     ];
   };
 
