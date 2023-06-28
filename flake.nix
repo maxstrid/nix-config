@@ -53,6 +53,7 @@
             ./home
             ./common/home
             ./hosts/arch
+            ./modules/river.nix
           ];
 
           extraSpecialArgs = { inherit nix-colors nixgl; };

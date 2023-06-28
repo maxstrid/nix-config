@@ -21,6 +21,12 @@
         identityFile = "/home/max/.ssh/id_home_server_ed25519";
         user = "admin";
       };
+      "orange_pi" = {
+        hostname = "192.168.1.200";
+        identitiesOnly = true;
+        identityFile = "/home/max/.ssh/id_orange_pi_ed25519";
+        user = "admin";
+      };
       "build" = {
         hostname = "build.frc971.org";
         forwardAgent = true;
