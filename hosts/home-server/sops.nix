@@ -12,4 +12,6 @@
       group = config.users.users.nextcloud.group;
     };
   };
+
+  users.users.nextcloud.extraGroups = [ config.users.groups.keys.name ];
 }
