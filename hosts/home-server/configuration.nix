@@ -45,13 +45,17 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      22 80 443
+      22
+      80
+      443
       # Jellyfin ports
-      8096 8920
+      8096
+      8920
     ];
     allowedUDPPorts = [
       # Jellyfin ports
-      1900 7359
+      1900
+      7359
     ];
   };
 
@@ -89,7 +93,7 @@
       hostName = "192.168.1.90";
       configureRedis = true;
       caching.apcu = false;
-      config.adminpassFile = "${pkgs.writeText "adminpass" "${config.sops.secrets.home_server.nextcloud_password}"}";
+      config.adminpassFile = "${pkgs.writeText "adminpass" "${config.sops.secrets.nextcloud_password}"}";
     };
 
     jellyfin.enable = true;
