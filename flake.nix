@@ -14,6 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix.url = "github:Mic92/sops-nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -25,6 +26,7 @@
     , nixpkgs
     , home-manager
     , rust-overlay
+    , sops-nix
     , nixos-hardware
     , nix-colors
     , nixgl
@@ -101,8 +103,15 @@
           specialArgs = { inherit nix-colors; };
           modules = [
             nixos-hardware.nixosModules.common-cpu-intel
+            sops-nix.nixosModules.sops
             nur.nixosModules.nur
             ./hosts/home-server
+            ({ pkgs, sops, ... }: {
+              sops.defaultSopsFile = ./secrets/secrets.yaml;
+              sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+              sops.age.keyFile = "/var/lib/sops-nix/key.txt";
+              sops.age.generateKey = true;
+            })
           ];
         };
       };
