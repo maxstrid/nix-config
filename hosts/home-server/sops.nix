@@ -8,8 +8,9 @@
   sops.secrets = {
     nextcloud_password = {
       sopsFile = ./secrets.yaml;
-      owner = config.users.users.admin.name;
-      group = config.users.users.admin.group;
+      neededForUsers = true;
+      owner = config.users.users.nextcloud.name;
+      group = config.users.users.nextcloud.group;
     };
   };
 }
