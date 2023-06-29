@@ -105,13 +105,16 @@
             nixos-hardware.nixosModules.common-cpu-intel
             sops-nix.nixosModules.sops
             nur.nixosModules.nur
-            ./hosts/home-server
             ({ pkgs, sops, ... }: {
               sops.defaultSopsFile = ./secrets/secrets.yaml;
               sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
               sops.age.keyFile = "/var/lib/sops-nix/key.txt";
               sops.age.generateKey = true;
+              sops.secrets.home_server = {
+                sopsFile = ./secrets/secrets.yaml;
+              };
             })
+            ./hosts/home-server
           ];
         };
       };
