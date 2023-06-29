@@ -94,7 +94,7 @@
       configureRedis = true;
       caching.apcu = false;
       config = {
-        adminpassFile = /run/secrets/nextcloud_password;
+        adminpassFile = config.sops.secrets.nextcloud_password.path;
       };
     };
 
