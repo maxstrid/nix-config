@@ -3,11 +3,9 @@
 # Also see https://github.com/Mic92/dotfiles/blob/master/nixos/.sops.yaml
 # for a more complex example.
 keys:
-  - &admin_t480 age1v4vu8dhwr8hre8cgr4393q4ja4wa6sw2e68fhd4hx8t5q6cewdesvvrvrr
-  - &admin_homeserver age1eh6wz8txusthcqc3hman9ke3p6zflv238szj0u2s20v8dgvf4qtqqx602t
+  - &home_server age1eh6wz8txusthcqc3hman9ke3p6zflv238szj0u2s20v8dgvf4qtqqx602t
 creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
+  - path_regex: hosts/home-server/secrets.yaml
     key_groups:
     - age:
-      - *admin_t480
-      - *admin_homeserver
+      - *home_server
