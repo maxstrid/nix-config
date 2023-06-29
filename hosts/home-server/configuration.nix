@@ -93,7 +93,7 @@
       hostName = "192.168.1.90";
       configureRedis = true;
       caching.apcu = false;
-      config.adminpassFile = "${pkgs.writeText "adminpass" "${config.sops.secrets.nextcloud_password}"}";
+      config.adminpassFile = config.sops.secrets.nextcloud_password.path;
     };
 
     jellyfin.enable = true;
