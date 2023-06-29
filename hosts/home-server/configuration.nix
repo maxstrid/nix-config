@@ -83,6 +83,15 @@
       };
     };
 
+    nextcloud = {
+      enable = true;
+      package = pkgs.nextcloud27;
+      hostName = "192.168.1.90";
+      configureRedis = true;
+      caching.apcu = false;
+      config.adminpassFile = "${pkgs.writeText "adminpass" "${config.sops.secrets.home_server.nextcloud_password}"}";
+    };
+
     jellyfin.enable = true;
   };
 
