@@ -39,6 +39,7 @@
       curl
       wget
       rclone
+      gallery-dl
     ];
   };
 
