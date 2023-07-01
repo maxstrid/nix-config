@@ -84,7 +84,7 @@
       settings = {
         PermitRootLogin = "no";
         LogLevel = "VERBOSE";
-        PasswordAuthentication = false;
+        PasswordAuthentication = true;
       };
     };
 
