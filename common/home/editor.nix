@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -152,7 +152,11 @@
         plugin = rust-tools-nvim;
         type = "lua";
         config = ''
-          require('rust-tools').setup()
+          require('rust-tools').setup {
+            server = {
+              cmd = { "${pkgs.rust-analyzer}" }
+            }
+          }
         '';
       }
       plenary-nvim
