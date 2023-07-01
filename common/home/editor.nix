@@ -154,7 +154,7 @@
         config = ''
           require('rust-tools').setup {
             server = {
-              cmd = { "${pkgs.rust-analyzer}" }
+              cmd = { "${pkgs.rust-analyzer}/bin/rust-analyzer" }
             }
           }
         '';
