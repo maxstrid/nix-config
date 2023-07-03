@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.neovim = {
@@ -126,8 +126,15 @@
             cmd = {'clangd', '--clang-tidy', '--compile-commands-dir=build', '--enable-config'},
           }
 
-          lspconfig.rnix.setup {
-            capabilities = capabilities
+          lspconfig.nil_ls.setup {
+            capabilities = capabilities,
+            settings = {
+              ['nil'] = {
+                formatting = {
+                  command = { "nixpkgs-fmt" },
+                },
+              },
+            },
           }
         '';
       }
@@ -250,10 +257,11 @@
       }
       indent-blankline-nvim
     ];
-    extraPackages = with pkgs; [
+    extraPackages = [
       pkgs.rust-analyzer
       pkgs.clang-tools
-      pkgs.rnix-lsp
+      pkgs.nixpkgs-fmt
+      pkgs.nil
     ];
   };
 }

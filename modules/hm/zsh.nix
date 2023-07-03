@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     initExtra = ''
@@ -15,6 +15,9 @@
 
       PROMPT="%B%F{11}%n%f%b%B%F{9}@%f%b%B%F{13}%m%f%b %B%F{11}(%f%b%B%F{9}%~%f%b%B%F{11})%f%b %B%F{13}❱%f%b "
       RPROMPT="%?"
+
+      # Manage packages using nixpkgs
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '';
     shellAliases = {
       nvim = "TERM=xterm-kitty nvim";
@@ -29,33 +32,5 @@
       save = 10000;
       share = true;
     };
-  };
-
-  programs.kitty = {
-    enable = true;
-    font = {
-      package =
-        (pkgs.nerdfonts.override {
-          fonts = [
-            "JetBrainsMono"
-          ];
-        });
-      name = "JetBrainsMono NF";
-    };
-    theme = "Gruvbox Dark";
-  };
-
-  programs.tmux = {
-    enable = true;
-    terminal = "xterm-256color";
-    keyMode = "vi";
-    historyLimit = 5000;
-    newSession = true;
-    sensibleOnTop = true;
-    plugins = with pkgs.tmuxPlugins; [
-      yank
-      gruvbox
-      tmux-thumbs
-    ];
   };
 }

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = [
@@ -10,6 +10,5 @@
     pkgs.ripgrep
     pkgs.jdk
     (import ./backlight_script.nix { inherit pkgs; })
-#    (import ./profile_script.nix { inherit lib; inherit pkgs; })
   ];
 }

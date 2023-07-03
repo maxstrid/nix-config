@@ -22,8 +22,7 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
+    { nixpkgs
     , home-manager
     , rust-overlay
     , sops-nix
@@ -52,11 +51,18 @@
 
           modules = [
             nur.hmModules.nur
-            ./home
-            ./common/home
+            ./home.nix
             ./hosts/arch
             ./modules/hm/river.nix
+            ./modules/hm/yambar.nix
             ./modules/hm/neovim.nix
+            ./modules/hm/zsh.nix
+            ./modules/hm/kitty.nix
+            ./modules/hm/tmux.nix
+            ./modules/hm/firefox.nix
+            ./modules/hm/vscode.nix
+            ./modules/hm/dev.nix
+            ./modules/hm/packages.nix
           ];
 
           extraSpecialArgs = { inherit nix-colors nixgl; };

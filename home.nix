@@ -1,5 +1,6 @@
-{ config, pkgs, nix-colors, ... }:
+{ nix-colors, ... }:
 
+# Default home-manager configuration
 {
   imports = [
     nix-colors.homeManagerModules.default
@@ -37,8 +38,4 @@
   home.stateVersion = "23.05";
 
   programs.home-manager.enable = true;
-  services.home-manager.autoUpgrade = {
-    enable = true;
-    frequency = "daily";
-  };
 }

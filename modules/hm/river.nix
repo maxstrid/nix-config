@@ -1,4 +1,4 @@
-{ config, pkgs, nix-colors, ... }:
+{ config, pkgs, ... }:
 
 let
   background_path = ".config/bg.png";

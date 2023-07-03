@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.firefox = {
@@ -23,7 +23,7 @@
           "browser.uidensity" = 1;
 
           "datareporting.healthreport.uploadEnabled" = false;
-          "datareporting.policy.dataSubmissionPolicyAcceptedVersion" =  2;
+          "datareporting.policy.dataSubmissionPolicyAcceptedVersion" = 2;
           "datareporting.policy.dataSubmissionPolicyNotifiedTime" = "1685901176127";
 
           "extensions.pocket.enabled" = false;
