@@ -38,6 +38,26 @@
 
       o.clipboard = 'unnamedplus'
       o.cmdheight = 0
+      -- Diagnostic setup
+
+      local sign = function(opts)
+        vim.fn.sign_define(opts.name, {
+          texthl = opts.name,
+          text = opts.text,
+          numhl = ""
+        })
+      end
+
+      sign {name = 'DiagnosticSignError', text = ''}
+      sign {name = 'DiagnosticSignWarn', text=' '}
+      sign {name = 'DiagnosticSignHint', text=''}
+      sign {name = 'DiagnosticSignInfo', text=''}
+
+      vim.diagnostic.config {
+        signs = true,
+        underline = true,
+        update_in_insert = true,
+      }
 
       vim.cmd("autocmd FileType nix setlocal tabstop=2 shiftwidth=2 expandtab")
       vim.cmd("autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab")
@@ -145,8 +165,8 @@
               format = function(entry, item)
                 local menu_icon = {
                   nvim_lsp = '󰘧',
-                  luasnip = '󰏉',
-                  buffer = '',
+                  luasnip = '󰊕',
+                  buffer = '󰊄',
                   path = '',
                 }
                 item.menu = menu_icon[entry.source.name]

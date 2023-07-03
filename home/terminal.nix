@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
   programs.zsh = {
@@ -9,12 +9,12 @@
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     initExtra = ''
-    zle -N autosuggest-accept
-    bindkey '^R' history-incremental-search-backward
-    bindkey '^[[Z' autosuggest-accept
+      zle -N autosuggest-accept
+      bindkey '^R' history-incremental-search-backward
+      bindkey '^[[Z' autosuggest-accept
 
-    PROMPT="%B%F{11}%n%f%b%B%F{9}@%f%b%B%F{13}%m%f%b %B%F{11}(%f%b%B%F{9}%~%f%b%B%F{11})%f%b %B%F{13}❱%f%b "
-    RPROMPT="%?"
+      PROMPT="%B%F{11}%n%f%b%B%F{9}@%f%b%B%F{13}%m%f%b %B%F{11}(%f%b%B%F{9}%~%f%b%B%F{11})%f%b %B%F{13}❱%f%b "
+      RPROMPT="%?"
     '';
     shellAliases = {
       nvim = "TERM=xterm-kitty nvim";
@@ -40,7 +40,7 @@
             "JetBrainsMono"
           ];
         });
-        name = "JetBrainsMono NF";
+      name = "JetBrainsMono NF";
     };
     theme = "Gruvbox Dark";
   };
