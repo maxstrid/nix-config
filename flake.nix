@@ -84,7 +84,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.max = import ./common/home;
+              home-manager.users.max = import ./home.nix;
             }
           ];
         };
@@ -94,7 +94,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit nix-colors; };
-              home-manager.users.max = ./common/home;
+              home-manager.users.max = ./home.nix;
             }
             nixos-hardware.nixosModules.lenovo-thinkpad-x220
             nur.nixosModules.nur
