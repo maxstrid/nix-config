@@ -55,7 +55,8 @@
             ./home
             ./common/home
             ./hosts/arch
-            ./modules/river.nix
+            ./modules/hm/river.nix
+            ./modules/hm/neovim.nix
           ];
 
           extraSpecialArgs = { inherit nix-colors nixgl; };

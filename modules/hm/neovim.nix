@@ -41,6 +41,7 @@
 
       vim.cmd("autocmd FileType nix setlocal tabstop=2 shiftwidth=2 expandtab")
       vim.cmd("autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 expandtab")
+      vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format()")
 
       local default_opts = { noremap = true, silent = true }
       vim.g.mapleader = ' '
@@ -66,14 +67,15 @@
         plugin = bufferline-nvim;
         type = "lua";
         config = ''
-          require("bufferline").setup()
+          require('bufferline').setup()
         '';
       }
       {
         plugin = gruvbox-material;
         type = "lua";
         config = ''
-          vim.o.background = "dark"
+          vim.o.background = 'dark'
+          vim.g.gruvbox_material_background = 'medium'
           vim.g.gruvbox_material_foreground = 'mix'
           vim.cmd 'colorscheme gruvbox-material'
         '';
@@ -90,8 +92,14 @@
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
-          local lspconfig = require("lspconfig")
-          local capabilities = require("cmp_nvim_lsp").default_capabilities()
+          local lspconfig = require('lspconfig')
+          local lsp_defaults = lspconfig.util.default_config
+
+          lsp_defaults.capabilities = vim.tbl_deep_extend(
+            'force',
+            lsp_defaults.capabilities,
+            require('cmp_nvim_lsp').default_capabilities()
+          )
 
           lspconfig.clangd.setup {
             capabilities = capabilities,
@@ -112,7 +120,7 @@
           cmp.setup {
             snippet = {
               expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body)
+                require('luasnip').lsp_expand(args.body)
               end,
             },
             window = {
@@ -127,14 +135,35 @@
               ['<CR>'] = cmp.mapping.confirm { select = true },
             },
             sources = cmp.config.sources {
-              { name = 'nvim_lsp' },
-              { name = 'vsnip' }, },
-              { { name = 'buffer' },
-            }
+              { name = 'path' },
+              { name = 'nvim_lsp', keyword_length = 1 },
+              { name = 'buffer', keyword_length = 3 },
+              { name = 'luasnip', keyword_length = 2 },
+            },
+            formatting = {
+              fields = { 'menu', 'abbr', 'kind' },
+              format = function(entry, item)
+                local menu_icon = {
+                  nvim_lsp = '󰘧',
+                  luasnip = '󰏉',
+                  buffer = '',
+                  path = '',
+                }
+                item.menu = menu_icon[entry.source.name]
+                return item
+              end,
+            },
           }
         '';
       }
-      cmp-vsnip
+      {
+        plugin = luasnip;
+        type = "lua";
+        config = ''
+          require('luasnip.loaders.from_vscode').lazy_load()
+        '';
+      }
+      cmp_luasnip
       cmp-nvim-lsp
       cmp-buffer
       cmp-path

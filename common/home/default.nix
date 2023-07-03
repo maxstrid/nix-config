@@ -3,7 +3,6 @@
 {
   imports = [
     nix-colors.homeManagerModules.default
-    ./editor.nix
   ];
 
   # Based on morhetz gruvbox
