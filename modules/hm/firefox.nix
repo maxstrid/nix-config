@@ -4,7 +4,7 @@
   programs.firefox = {
     enable = true;
     profiles = {
-      "Default" = {
+      Default = {
         bookmarks = [{
           name = "Roborio Setup";
           url = "https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-3/imaging-your-roborio.html";
@@ -31,5 +31,9 @@
         };
       };
     };
+  };
+
+  programs.librewolf = {
+    enable = true;
   };
 }
