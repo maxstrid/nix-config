@@ -66,10 +66,11 @@
       local default_opts = { noremap = true, silent = true }
       vim.g.mapleader = ' '
 
-      keymap("n", "<leader>bp", "<cmd>BufferLinePick<cr>", default_opts)
-      keymap("n", "<leader>bc", "<cmd>BufferLinePickClose<cr>", default_opts)
-      keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", default_opts)
-      keymap("n", "<leader>g", "<cmd>Telescope live grep<cr>", default_opts)
+      vim.keymap.set("n", "<leader>bp", "<cmd>BufferLinePick<cr>")
+      vim.keymap.set("n", "<leader>bc", "<cmd>BufferLinePickClose<cr>")
+      vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<cr>")
+      vim.keymap.set("n", "<leader>g", "<cmd>Telescope live grep<cr>")
+      vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
     '';
     plugins = with pkgs.vimPlugins; [
       nvim-web-devicons
@@ -135,6 +136,14 @@
                 },
               },
             },
+          }
+
+          lspconfig.bashls.setup {
+            capabilities = capabilities
+          }
+
+          lspconfig.pyright.setup {
+            capabilities = capabilities
           }
         '';
       }
@@ -262,6 +271,9 @@
       pkgs.clang-tools
       pkgs.nixpkgs-fmt
       pkgs.nil
+
+      pkgs.nodePackages.bash-language-server
+      pkgs.nodePackages.pyright
     ];
   };
 }
