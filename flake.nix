@@ -54,7 +54,6 @@
             ./home.nix
             ./hosts/arch
             ./modules/hm/river.nix
-            ./modules/hm/yambar.nix
             ./modules/hm/neovim.nix
             ./modules/hm/zsh.nix
             ./modules/hm/kitty.nix
@@ -63,6 +62,8 @@
             ./modules/hm/vscode.nix
             ./modules/hm/dev.nix
             ./modules/hm/packages.nix
+            ./modules/hm/hyprland.nix
+            ./modules/hm/waybar.nix
           ];
 
           extraSpecialArgs = { inherit nix-colors nixgl; };

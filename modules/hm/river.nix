@@ -31,12 +31,6 @@ in
   };
 
   home.file = {
-    "${background_path}" = {
-      source = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/ngynLk/wallpapers/master/nature/florest-stair2.jpg";
-        sha256 = "sha256-VaD6gCeW2QiK405J7nzdNtv9jmmDfQeUyfkwwvWSYS8=";
-      };
-    };
 
     ".config/river/layout.kl" = {
       text = ''
