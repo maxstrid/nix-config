@@ -35,6 +35,24 @@
     font = "Lat2-Terminus16";
   };
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vaapiIntel
+      vaapiVdpau
+      intel-media-driver
+      intel-compute-runtime
+      libvdpau-va-gl
+      vulkan-loader
+      mesa
+    ];
+  };
+
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
