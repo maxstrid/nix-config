@@ -11,7 +11,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   boot.initrd.luks.devices = {
     crypt = {
       device = "/dev/disk/by-uuid/a7407632-441f-48c0-9b06-48b691457eef";
@@ -20,7 +20,7 @@
   };
 
   fonts.fonts = [
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono"]; })
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   boot.loader.grub.efiSupport = true;
@@ -35,10 +35,6 @@
     font = "Lat2-Terminus16";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
-   
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
