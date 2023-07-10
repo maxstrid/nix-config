@@ -83,4 +83,10 @@
     userName = "Maxwell Henderson";
     userEmail = "maxwell.henderson@mailbox.org";
   };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 }

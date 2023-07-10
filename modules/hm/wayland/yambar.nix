@@ -1,6 +1,10 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
+  home.packages = [
+    pkgs.yambar
+  ];
+
   home.file = {
     ".config/yambar/config.yml" = {
       text = ''

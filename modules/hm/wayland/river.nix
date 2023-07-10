@@ -6,6 +6,8 @@ in
 {
   home.packages = [
     pkgs.rivercarro
+    pkgs.bemenu
+    pkgs.river
     pkgs.wbg
   ];
 
