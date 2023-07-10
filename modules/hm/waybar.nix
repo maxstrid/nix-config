@@ -122,7 +122,7 @@
       #workspaces {
         background-color: #${config.colorScheme.colors.base01};
         color: #${config.colorScheme.colors.base04};
-        border: 1px solid #${config.colorScheme.colors.base02};
+        border: 2px solid #${config.colorScheme.colors.base04};
         padding: 0px;
         margin: 2px;
         border-radius: 5px;
@@ -150,7 +150,7 @@
       #battery, #clock, #pulseaudio, #network, #language {
         background-color: #${config.colorScheme.colors.base01};
         color: #${config.colorScheme.colors.base04};
-        border: 1px solid #${config.colorScheme.colors.base02};
+        border: 2px solid #${config.colorScheme.colors.base04};
 
         padding-top: 0px;
         padding-bottom: 0px;

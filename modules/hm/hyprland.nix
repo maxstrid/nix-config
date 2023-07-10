@@ -15,8 +15,8 @@ in
   home.file = {
     "${bg_path}" = {
       source = pkgs.fetchurl {
-        url = "https://gitlab.com/exorcist365/wallpapers/-/raw/master/gruvbox/leaves-3.jpg";
-        sha256 = "sha256-6nxLdVH6CC0kxsCG+mgTQU80/6D9NnX5XKOq69GflLs=";
+        url = "https://raw.githubusercontent.com/AngelJumbo/gruvbox-wallpapers/main/wallpapers/minimalistic/gruvbox_grid.png";
+        sha256 = "sha256-b7hN7xV/0a/7NVB3jLimPsaIO+ZLXGym7Hmvu5UsPoI=";
       };
     };
     ".config/kickoff/config.toml" = {
