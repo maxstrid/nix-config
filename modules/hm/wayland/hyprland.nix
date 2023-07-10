@@ -5,10 +5,8 @@ let
 in
 {
   home.packages = [
-    pkgs.wbg
     pkgs.grim
     pkgs.slurp
-    pkgs.swayidle
     pkgs.kickoff
   ];
 

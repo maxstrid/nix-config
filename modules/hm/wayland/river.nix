@@ -7,7 +7,6 @@ in
   home.packages = [
     pkgs.rivercarro
     pkgs.wbg
-    pkgs.swayidle
   ];
 
   gtk = {
@@ -18,20 +17,7 @@ in
     };
   };
 
-  services.mako = {
-    enable = true;
-    backgroundColor = "#${config.colorScheme.colors.base00}";
-    borderColor = "#${config.colorScheme.colors.base0A}";
-    width = 300;
-    height = 110;
-    borderSize = 2;
-    defaultTimeout = 15000;
-    icons = false;
-    ignoreTimeout = true;
-  };
-
   home.file = {
-
     ".config/river/layout.kl" = {
       text = ''
         const layout (Vertical | Horizontal Horizontal)
@@ -44,22 +30,6 @@ in
         const default params_layout
       '';
     };
-
-    # Swaylock doesn't play well with home-manager
-    ".config/swaylock/config" = {
-      text = ''
-        image=/home/max/${background_path}
-      '';
-    };
-
-    ".config/swayidle/config" = {
-      text = ''
-        timeout 360 "systemctl hybrid-sleep"
-        before-sleep swaylock 
-        lock swaylock
-      '';
-    };
-
     ".config/river/init" = {
       executable = true;
       text = ''

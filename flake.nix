@@ -53,7 +53,8 @@
             nur.hmModules.nur
             ./home.nix
             ./hosts/arch
-            ./modules/hm/river.nix
+            ./modules/hm/wayland
+            ./modules/hm/wayland/hyprland.nix
             ./modules/hm/neovim.nix
             ./modules/hm/zsh.nix
             ./modules/hm/kitty.nix
@@ -62,8 +63,6 @@
             ./modules/hm/vscode.nix
             ./modules/hm/dev.nix
             ./modules/hm/packages.nix
-            ./modules/hm/hyprland.nix
-            ./modules/hm/waybar.nix
           ];
 
           extraSpecialArgs = { inherit nix-colors nixgl; };
@@ -100,7 +99,8 @@
             nixos-hardware.nixosModules.lenovo-thinkpad-x220
             nur.nixosModules.nur
             ./hosts/x220
-            ./modules/dwm.nix
+            ./modules/hm/wayland
+            ./modules/hm/wayland/river.nix
           ];
           specialArgs = {
             inherit home-manager;
