@@ -12,14 +12,14 @@
       text = ''
         image=/home/max/.config/bg.png
       '';
+    };
 
-      ".config/swayidle/config" = {
-        text = ''
-          timeout 360 "systemctl hybrid-sleep"
-          before-sleep swaylock
-          lock swaylock
-        '';
-      };
+    ".config/swayidle/config" = {
+      text = ''
+        timeout 360 "systemctl hybrid-sleep"
+        before-sleep swaylock
+        lock swaylock
+      '';
     };
   };
 }
