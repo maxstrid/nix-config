@@ -94,13 +94,25 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit nix-colors; };
-              home-manager.users.max = ./home.nix;
+              home-manager.users.max = {
+                imports = [
+                  ./home.nix
+                  ./modules/hm/wayland
+                  ./modules/hm/wayland/river.nix
+                  ./modules/hm/neovim.nix
+                  ./modules/hm/zsh.nix
+                  ./modules/hm/kitty.nix
+                  ./modules/hm/tmux.nix
+                  ./modules/hm/firefox.nix
+                  ./modules/hm/vscode.nix
+                  ./modules/hm/dev.nix
+                  ./modules/hm/packages.nix
+                ];
+              };
             }
             nixos-hardware.nixosModules.lenovo-thinkpad-x220
             nur.nixosModules.nur
             ./hosts/x220
-            ./modules/hm/wayland
-            ./modules/hm/wayland/river.nix
           ];
           specialArgs = {
             inherit home-manager;
