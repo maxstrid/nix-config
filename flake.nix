@@ -93,7 +93,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit nix-colors; };
+              home-manager.extraSpecialArgs = { inherit nix-colors pkgs; };
               home-manager.users.max = {
                 imports = [
                   ./home.nix
