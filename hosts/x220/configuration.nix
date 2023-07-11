@@ -66,6 +66,8 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
+  programs.zsh.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
     wget
