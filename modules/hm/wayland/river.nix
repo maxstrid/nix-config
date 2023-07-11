@@ -6,6 +6,7 @@ in
 {
   home.packages = [
     pkgs.rivercarro
+    pkgs.river-tag-overlay
     pkgs.bemenu
     pkgs.river
     pkgs.wbg
@@ -211,6 +212,7 @@ in
         riverctl default-layout rivertile
         riverctl spawn yambar
         riverctl spawn pipewire
+        riverctl spawn 'wbg ~/.config/bg.png'
         riverctl spawn '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1'
         riverctl spawn 'swaybg -i ${background_path}'
         riverctl spawn 'swayidle'
