@@ -12,6 +12,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # For swaylock.
+  security.pam.services.swaylock = { };
+
   boot.initrd.luks.devices = {
     crypt = {
       device = "/dev/disk/by-uuid/a7407632-441f-48c0-9b06-48b691457eef";
