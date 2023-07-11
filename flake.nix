@@ -99,6 +99,7 @@
                   ./home.nix
                   ./modules/hm/wayland
                   ./modules/hm/wayland/river.nix
+                  ./modules/hm/wayland/swaylock.nix
                   ./modules/hm/neovim.nix
                   ./modules/hm/zsh.nix
                   ./modules/hm/kitty.nix
