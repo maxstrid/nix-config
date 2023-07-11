@@ -62,6 +62,7 @@
 
   users.users.max = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
