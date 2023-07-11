@@ -22,7 +22,7 @@
     shellAliases = {
       nvim = "TERM=xterm-kitty nvim";
       ls = "exa";
-      rebuild = "sudo nixos-rebuild switch --flake ~/.config/nix-config/.#t480";
+      rebuild = "sudo nixos-rebuild switch --flake ~/.config/nix-config/.#$(cat /proc/sys/kernel/hostname)";
       hm-rebuild = "home-manager switch --flake ~/.config/nix-config/.#max";
       rm-branches = "git branch | grep -v master | xargs git branch -D";
     };
