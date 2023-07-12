@@ -1,8 +1,13 @@
 { pkgs, ... }:
 
+let
+  gimp = pkgs.gimp.override {
+    withPython = true;
+  };
+in
 {
   home.packages = [
-    pkgs.gimp
+    gimp
     pkgs.gimpPlugins.resynthesizer
   ];
 }
