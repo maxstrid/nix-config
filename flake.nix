@@ -108,6 +108,7 @@
                   ./modules/hm/vscode.nix
                   ./modules/hm/dev.nix
                   ./modules/hm/packages.nix
+                  ./modules/hm/gimp.nix
                 ];
               };
             }
