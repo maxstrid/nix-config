@@ -6,7 +6,14 @@
       ./hardware-configuration.nix
     ];
 
-  nixpkgs.config.allowUnfree = false;
+  nixpkgs.config = {
+    allowUnfree = false;
+
+    # For gimp
+    permittedInsecurePackages = [
+      "python-2.7.18.6-env"
+    ];
+  };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.loader.systemd-boot.enable = true;
