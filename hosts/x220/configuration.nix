@@ -80,6 +80,8 @@
     curl
   ];
 
+  programs.kdeconnect.enable = true;
+
   services.tlp.enable = true;
   services.upower.enable = true;
 
