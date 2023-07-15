@@ -145,6 +145,10 @@
           lspconfig.pyright.setup {
             capabilities = capabilities
           }
+
+          lspconfig.jsonls.setup {
+            capabilities = capabilities
+          }
         '';
       }
       {
@@ -271,6 +275,9 @@
       pkgs.clang-tools
       pkgs.nixpkgs-fmt
       pkgs.nil
+
+      # For json.
+      pkgs.vscode-langservers-extracted
 
       pkgs.nodePackages.bash-language-server
       pkgs.nodePackages.pyright
